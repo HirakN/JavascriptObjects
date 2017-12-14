@@ -90,3 +90,21 @@ function ac() {
 	clear();
 	update("CLEARED");
 }
+
+//event listeners instead of onclick
+
+button7 = document.getElementById("sev");
+button7.addEventListener("click", seven);
+
+// When you pass a function to a function you dont use parentheses or it will fire immediately, they are called callbacks.
+
+// Iterating
+var buttons = document.getElementsByClassName("buttonNum");
+
+for (var ii = 0; ii < buttons.length; ii++) {
+	var currentButton = buttons[ii];
+	currentButton.addEventListener("click", function(event) {
+		debugger;
+		console.log(this.innerHTML + " is clicked");
+	});
+}
