@@ -7,12 +7,15 @@ var numberButtons = document.getElementsByClassName('buttonNum');
 var operatorButtons = document.getElementsByClassName('operator');
 var display = document.getElementById('screen');
 var equalsButton = document.getElementsByClassName('equals')[0];
+var firstNumber, secondNumber;
 
 function addButtonListeners() {
 	for (var ii = 0; ii < numberButtons.length; ii++) {
 		var button = numberButtons[ii];
 		button.addEventListener("click", function(event) {
-			displayText(event.target.innerHTML);
+			var number = event.target.innerHTML;
+			displayText(number);
+			saveNumber(number);
 		});
 	}
 
@@ -24,7 +27,7 @@ function addButtonListeners() {
 	}
 
 	equalsButton.addEventListener("click", function() {
-		calculate();
+		calculate("vars");
 	})
 }
 
@@ -34,6 +37,14 @@ function displayText(text) {
 	return display.innerHTML = text;
 }
 
+function saveNumber() {
+	if (!firstNumber) {
+		return firstNumber = number;
+	} else {
+		return secondNumber = number;
+	}
+}
+
 // Add event listener to the calculate button that fires function called "calculate" *
 
 // Write the calculate function to take two numbers and an operator and return the answer
@@ -41,14 +52,14 @@ function calculate(firstNum, secondNum, operator) {
 	switch(operator) {
 		case "+":
 			return firstNum + secondNum;
-		case "-";
+		case "-":
 			return firstNum - secondNum;
 		case "*":
 			return firstNum * secondNum;
 		case "/":
 			return firstNum / secondNum;
 		default:
-			return throw "Incorrect Operator";
+			return "Incorrect Operator";
 	}
 }
 // Display the answer on the screen
